@@ -2,7 +2,7 @@
 
 Stone 0 
 paper 1
-Scissors -1
+Scissors -1 
 
 '''
 
