@@ -8,38 +8,32 @@ scijar -1
 
 import random
 
+print("=== Stone Paper Scissors ===\n")
+print("s = Stone")
+print("p = Paper")
+print("sc = Scissors\n")
 
-computer = random.choice([1,0,-1])
+# Mapping
+choices = {'s': 0, 'p': 1, 'sc': -1}
+reverse = {0: "Stone", 1: "Paper", -1: "Scissors"}
 
-youstr = input("Enter your choices : ")
-youDict =  {'s' : 0 , 'p' : 1 , 'sc' : -1}
-reverseDict = {0 : "Stone" ,1 : "Paper"  , -1 : "Scijar"}
-you = youDict[youstr]
+computer = random.choice([0, 1, -1])
 
-print(f"Your choice {reverseDict[you]}\nComputer choice {reverseDict[computer]}😔")  #computer - you
+youstr = input("Enter your choice (s/p/sc): ").strip().lower()
 
-
-
-if (computer == you):
-    print("Draw the game.\nPlay the game again" )
-
-elif(computer == 1 and you == 0 ): # 1 
-    print("You lose👍😔")
-
-elif(computer == 1 and you == -1 ): # 2
-    print("You win👍")
-
-elif(computer == -1 and you == 0 ): # -1
-    print("You win👍")
-
-elif(computer == -1 and you == 1): # -2
-    print("You lose👍😔")
-
-elif(computer == 0 and you == 1 ): # -1
-    print("You win👍")
-
-elif(computer == 0 and you == -1 ): # 1
-    print("You lose👍😔")
-
+if youstr not in choices:
+    print("❌ Invalid input! Please enter s, p or sc")
 else:
-    print("something is worrg.\nTry again!")
+    you = choices[youstr]
+    
+    print(f"\nYou chose     : {reverse[you]}")
+    print(f"Computer chose: {reverse[computer]}")
+    
+    if computer == you:
+        print("🤝 It's a Draw!")
+    elif (computer == 1 and you == 0) or \
+         (computer == -1 and you == 1) or \
+         (computer == 0 and you == -1):
+        print("😔 You Lose!")
+    else:
+        print("🎉 You Win!")
